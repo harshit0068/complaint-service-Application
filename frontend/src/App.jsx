@@ -535,12 +535,13 @@ function TeamPage({ staff, onCreate, onUpdateSpecialty }) {
   const [error, setError] = useState("");
   async function submit(event) {
     event.preventDefault();
+    const form = event.currentTarget;
     setBusy(true);
     setError("");
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(form);
     try {
       await onCreate(Object.fromEntries(data.entries()));
-      event.currentTarget.reset();
+      form.reset();
       setShowForm(false);
     } catch (requestError) {
       setError(requestError.message);

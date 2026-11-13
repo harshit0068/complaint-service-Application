@@ -72,4 +72,9 @@ public class AppUser {
 	public String getBlock() { return block; }
 	public String getSpecialty() { return specialty; }
 	public void setSpecialty(String specialty) { this.specialty = specialty; }
+	public void setBootstrapCredentials(String email, String passwordHash) {
+		this.email = email;
+		this.passwordHash = passwordHash;
+		this.legacyPasswordHash = passwordHash;
+	}
 }

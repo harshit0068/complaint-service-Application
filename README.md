@@ -41,16 +41,20 @@ cd "c:\Users\harsh\Downloads\complaint-service\complaint-service"
 $env:HOSTELFIX_DB_URL = "jdbc:mysql://localhost:3306/hostelfix"
 $env:HOSTELFIX_DB_USER = "root"
 $env:HOSTELFIX_DB_PASSWORD = "your-mysql-root-password"
-$env:HOSTELFIX_BOOTSTRAP_EMAIL = "warden@hostelfix.local"
-$env:HOSTELFIX_BOOTSTRAP_PASSWORD = "choose-a-password-at-least-12-chars"
+$env:HOSTELFIX_BOOTSTRAP_EMAIL = "warden@srmist.edu.in"
+$env:HOSTELFIX_BOOTSTRAP_PASSWORD = "choose-a-password-at-least-8-chars"
 cd .\user-service
 mvn spring-boot:run
 ```
 
 The bootstrap account is created as a Warden the first time the service starts.
-Keep the password private. If bootstrap variables are omitted, students can
-register, but a Warden account must be configured before staff-management and
-reporting features are available.
+Keep the password private. To reset the existing Warden's email and password,
+set `$env:HOSTELFIX_BOOTSTRAP_RESET = "true"` before starting the User Service.
+The reset updates the Warden already using the configured email, or the only
+existing Warden; it stops with an error if multiple Warden accounts make the
+target ambiguous. Remove the reset variable after the reset. If bootstrap
+variables are omitted, students can register, but a Warden account must be
+configured before staff-management and reporting features are available.
 
 **Terminal 2 — Complaint Service**
 
